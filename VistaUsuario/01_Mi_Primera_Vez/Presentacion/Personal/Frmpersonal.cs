@@ -74,5 +74,10 @@ namespace _01_Mi_Primera_Vez.Presentacion.Personal
         {
 
         }
+
+        private void lblFrmPersonal_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

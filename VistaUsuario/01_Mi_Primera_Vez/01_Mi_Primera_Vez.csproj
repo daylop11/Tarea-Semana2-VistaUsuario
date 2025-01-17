@@ -49,8 +49,10 @@
     <Compile Include="Datos\conexion.cs" />
     <Compile Include="Datos\dto_pais.cs" />
     <Compile Include="Datos\dto_personal.cs" />
+    <Compile Include="Datos\dto_usuario.cs" />
     <Compile Include="Logica\cls_pais.cs" />
     <Compile Include="Logica\cls_personal.cs" />
+    <Compile Include="Logica\cls_usuario.cs" />
     <Compile Include="Presentacion\MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +71,7 @@
     <Compile Include="Presentacion\Personal\Frmpersonal.Designer.cs">
       <DependentUpon>Frmpersonal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Usuarios\cls_usuario.cs" />
     <Compile Include="Presentacion\Usuarios\CUUsuarios.cs">
       <SubType>UserControl</SubType>
     </Compile>

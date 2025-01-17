@@ -41,8 +41,8 @@ namespace _01_Mi_Primera_Vez.Presentacion.Personal
             this.txtCargo = new System.Windows.Forms.TextBox();
             this.txtNombres = new System.Windows.Forms.TextBox();
             this.txtCedula = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,13 +53,15 @@ namespace _01_Mi_Primera_Vez.Presentacion.Personal
             this.lblFrmPersonal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFrmPersonal.Location = new System.Drawing.Point(0, 0);
             this.lblFrmPersonal.Name = "lblFrmPersonal";
-            this.lblFrmPersonal.Size = new System.Drawing.Size(70, 26);
+            this.lblFrmPersonal.Size = new System.Drawing.Size(137, 26);
             this.lblFrmPersonal.TabIndex = 0;
-            this.lblFrmPersonal.Text = "label1";
+            this.lblFrmPersonal.Text = "FrmPersonal";
             this.lblFrmPersonal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFrmPersonal.Click += new System.EventHandler(this.lblFrmPersonal_Click);
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.cmbPais);
             this.panel1.Controls.Add(this.label4);
@@ -70,8 +72,8 @@ namespace _01_Mi_Primera_Vez.Presentacion.Personal
             this.panel1.Controls.Add(this.txtCargo);
             this.panel1.Controls.Add(this.txtNombres);
             this.panel1.Controls.Add(this.txtCedula);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnGuardar);
+            this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 26);
             this.panel1.Name = "panel1";
@@ -99,7 +101,7 @@ namespace _01_Mi_Primera_Vez.Presentacion.Personal
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(52, 173);
+            this.label4.Location = new System.Drawing.Point(70, 174);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 20);
             this.label4.TabIndex = 9;
@@ -117,7 +119,7 @@ namespace _01_Mi_Primera_Vez.Presentacion.Personal
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 96);
+            this.label2.Location = new System.Drawing.Point(38, 96);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(152, 20);
             this.label2.TabIndex = 7;
@@ -126,7 +128,7 @@ namespace _01_Mi_Primera_Vez.Presentacion.Personal
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(131, 59);
+            this.label1.Location = new System.Drawing.Point(140, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 20);
             this.label1.TabIndex = 6;
@@ -161,26 +163,26 @@ namespace _01_Mi_Primera_Vez.Presentacion.Personal
             this.txtCedula.TabIndex = 1;
             this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
             // 
-            // button2
+            // btnGuardar
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button2.Location = new System.Drawing.Point(0, 303);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(581, 94);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Guardar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnGuardar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnGuardar.Location = new System.Drawing.Point(0, 303);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(581, 94);
+            this.btnGuardar.TabIndex = 6;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // btnCancelar
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.Location = new System.Drawing.Point(0, 397);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(581, 94);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCancelar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnCancelar.Location = new System.Drawing.Point(0, 397);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(581, 94);
+            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // Frmpersonal
             // 
@@ -215,7 +217,7 @@ namespace _01_Mi_Primera_Vez.Presentacion.Personal
         private System.Windows.Forms.TextBox txtCargo;
         private System.Windows.Forms.TextBox txtNombres;
         private System.Windows.Forms.TextBox txtCedula;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
