@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using _01_Mi_Primera_Vez.Logica;
 namespace _01_Mi_Primera_Vez.Presentacion.Usuarios
 {
     public partial class FmrAgregar : Form

@@ -1,200 +1,91 @@
 ﻿using System;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
-using _01_Mi_Primera_Vez.Datos;
 namespace _01_Mi_Primera_Vez.Logica
-
- private readonly conexion cn = new conexion();
-
-    public string Insertar(dto_usuario Usuario)
 {
-    using (var conexion = cn.obtenerConexion())
+    public class cls_usuario
     {
-        string cadena1 = "insert into usuario (nombre, edad) values('" +
-            Usuario.nombre + "'," +
-            Usuario.edad + ")";
-        using (var comando = new SqlCommand(cadena1, conexion))
+        public cls_usuario()
         {
-            try
-            {
-                conexion.Open();
-                comando.ExecuteNonQuery();
-                return "ok";
-            }
-            catch (Exception e)
-            {
-                return e.Message;
-            }
         }
-    }
-}
+        private readonly conexion cn = new conexion();
 
-public List<dto_usuario> todos()
-{
-    var listausuario = new List<dto_usuario>();
-    using (var conexion = cn.obtenerConexion())
-    {
-        string cadena = "SELECT IdPersonal, nombre, edad FROM Usuario";
-        using (var comando = new SqlCommand(cadena, conexion))
+        public string Insertar(dto_usuario Usuario)
         {
-            conexion.Open();
-            using (var lector = comando.ExecuteReader())
+            using (var conexion = cn.obtenerConexion())
             {
-                while (lector.Read())
+                string cadena1 = "INSERT INTO usuario (nombre, edad) VALUES(@nombre, @edad)";
+                using (var comando = new SqlCommand(cadena1, conexion))
                 {
-                    var usuario = new dto_usuario
+                    comando.Parameters.AddWithValue("@nombre", Usuario.nombre);
+                    comando.Parameters.AddWithValue("@edad", Usuario.edad);
+
+                    try
                     {
-                        IdPersonal = (int)lector["IdPersonal"],
-                        nombre = lector["nombre"].ToString(),
-                        edad = (int)lector["edad"]
-                    };
-                    listausuario.Add(usuario);
-                }
-            }
-        }
-    }
-
-    return listausuario;
-}
-
-
-public class cls_usuario
-{
-    private readonly conexion cn = new conexion();
-
-    public string Insertar(dto_usuario Usuario)
-    {
-        using (var conexion = cn.obtenerConexion())
-        {
-            string cadena1 = "insert into usuario (nombre, edad) values('" +
-                Usuario.nombre + "'," +
-                Usuario.edad + ")";
-            using (var comando = new SqlCommand(cadena1, conexion))
-            {
-                try
-                {
-                    conexion.Open();
-                    comando.ExecuteNonQuery();
-                    return "ok";
-                }
-                catch (Exception e)
-                {
-                    return e.Message;
-                }
-            }
-        }
-    }
-
-    public List<dto_usuario> todos()
-    {
-        var listausuario = new List<dto_usuario>();
-        using (var conexion = cn.obtenerConexion())
-        {
-            string cadena = "SELECT IdPersonal, nombre, edad FROM Usuario";
-            using (var comando = new SqlCommand(cadena, conexion))
-            {
-                conexion.Open();
-                using (var lector = comando.ExecuteReader())
-                {
-                    while (lector.Read())
+                        conexion.Open();
+                        comando.ExecuteNonQuery();
+                        return "ok";
+                    }
+                    catch (Exception e)
                     {
-                        var usuario = new dto_usuario
-                        {
-                            IdPersonal = (int)lector["IdPersonal"],
-                            nombre = lector["nombre"].ToString(),
-                            edad = (int)lector["edad"]
-                        };
-                        listausuario.Add(usuario);
+                        return e.Message;
                     }
                 }
             }
         }
 
-        return listausuario;
-    }
-
-public class cls_usuario
-{
-    private readonly conexion cn = new conexion();
-
-    public string Insertar(dto_usuario Usuario)
-    {
-        using (var conexion = cn.obtenerConexion())
+        public List<dto_usuario> todos()
         {
-            string cadena1 = "INSERT INTO usuario (nombre, edad) VALUES(@nombre, @edad)";
-            using (var comando = new SqlCommand(cadena1, conexion))
+            var listausuario = new List<dto_usuario>();
+            using (var conexion = cn.obtenerConexion())
             {
-                comando.Parameters.AddWithValue("@nombre", Usuario.nombre);
-                comando.Parameters.AddWithValue("@edad", Usuario.edad);
-
-                try
+                string cadena = "SELECT IdPersonal, nombre, edad FROM Usuario";
+                using (var comando = new SqlCommand(cadena, conexion))
                 {
                     conexion.Open();
-                    comando.ExecuteNonQuery();
-                    return "ok";
-                }
-                catch (Exception e)
-                {
-                    return e.Message;
-                }
-            }
-        }
-    }
-
-    public List<dto_usuario> todos()
-    {
-        var listausuario = new List<dto_usuario>();
-        using (var conexion = cn.obtenerConexion())
-        {
-            string cadena = "SELECT IdPersonal, nombre, edad FROM Usuario";
-            using (var comando = new SqlCommand(cadena, conexion))
-            {
-                conexion.Open();
-                using (var lector = comando.ExecuteReader())
-                {
-                    while (lector.Read())
+                    using (var lector = comando.ExecuteReader())
                     {
-                        var usuario = new dto_usuario
+                        while (lector.Read())
                         {
-                            IdPersonal = (int)lector["IdPersonal"],
-                            nombre = lector["nombre"].ToString(),
-                            edad = (int)lector["edad"]
-                        };
-                        listausuario.Add(usuario);
+                            var usuario = new dto_usuario
+                            {
+                                IdPersonal = (int)lector["IdPersonal"],
+                                nombre = lector["nombre"].ToString(),
+                                edad = (int)lector["edad"]
+                            };
+                            listausuario.Add(usuario);
+                        }
                     }
                 }
             }
+
+            return listausuario;
         }
 
-        return listausuario;
-    }
-
-    public string Editar(dto_usuario Usuario)
-    {
-        using (var conexion = cn.obtenerConexion())
+        public string Editar(dto_usuario Usuario)
         {
-            string cadena = "UPDATE usuario SET nombre = @nombre, apellido = @apellido, edad = @edad, fechaNacimiento = @fechaNacimiento ;
-            using (var comando = new SqlCommand(cadena, conexion))
+            using (var conexion = cn.obtenerConexion())
             {
-                comando.Parameters.AddWithValue("@nombre", Usuario.nombre);
-                comando.Parameters.AddWithValue("@apellido", Usuario.apellido);
-                comando.Parameters.AddWithValue("@edad", Usuario.edad);
-                comando.Parameters.AddWithValue("@fechaNacimiento", Usuario.fechaNacimiento);
-                
+                string cadena = "UPDATE usuario SET nombre = @nombre, apellido = @apellido, edad = @edad, fechaNacimiento = @fechaNacimiento ;
+                        using (var comando = new SqlCommand(cadena, conexion))
+                {
+                    comando.Parameters.AddWithValue("@nombre", Usuario.nombre);
+                    comando.Parameters.AddWithValue("@apellido", Usuario.apellido);
+                    comando.Parameters.AddWithValue("@edad", Usuario.edad);
+                    comando.Parameters.AddWithValue("@fechaNacimiento", Usuario.fechaNacimiento);
 
-                try
-                {
-                    conexion.Open();
-                    comando.ExecuteNonQuery();
-                    return "ok";
+
+                    try
+                    {
+                        conexion.Open();
+                        comando.ExecuteNonQuery();
+                        return "ok";
+                    }
+                    catch (Exception e)
+                    {
+                        return e.Message;
+                    }
                 }
-                catch (Exception e)
-                {
-                    return e.Message;
-                }
+
+            }
+        }
     }
+}
